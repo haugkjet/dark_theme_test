@@ -50,7 +50,6 @@ function App() {
           <button onClick={switchTheme}>Toggle dark theme</button>
         </div>
       </div>
-      <h1>Dark Theme test</h1>
     </div>
   );
 }
