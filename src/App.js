@@ -4,8 +4,16 @@ import useLocalStorage from "use-local-storage";
 import "./index.css";
 
 function App() {
+  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
+
+  const switchTheme = () => {
+    console.log("Switch theme");
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
-    <div className="app">
+    <div className="app" data-theme={theme}>
       <div className="login">
         <h1>Login</h1>
         <div className="container">
@@ -29,6 +37,7 @@ function App() {
               <input type="checkbox" checked="checked" />
               <p>Remember me</p>
             </div>
+            <button>Log in</button>
           </form>
           <div className="bottom">
             <p>Forgot your password?</p>
@@ -38,7 +47,7 @@ function App() {
         </div>
         <div className="theme-toggle">
           <h2>Light theme</h2>
-          <button>Toggle dark theme</button>
+          <button onClick={switchTheme}>Toggle dark theme</button>
         </div>
       </div>
       <h1>Dark Theme test</h1>
